@@ -1,6 +1,27 @@
+# venv
 .venv
 
+# data
 data/
 dataset/
-dataset_cloth/
+dataset12/
+fabric_dataset/
+
 runs/
+app_ori.py
+
+# file / folder
+__pycache__/
+common/
+runs/
+
+# model -> 용량문제로 google drive
+model/
+model_sav/
+
+app_ori.py
+test.ipynb
+result/
+
+# git
+.gitignore
