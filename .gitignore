@@ -21,7 +21,6 @@ model_sav/
 
 app_ori.py
 test.ipynb
-result/
 
 # git
 .gitignore
