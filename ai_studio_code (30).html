@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoLaundry Presentation</title>
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Base Presentation Styles --- */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 1280px;
+            height: 720px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+            background-color: white;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* --- Common Slide Components --- */
+        .top-nav {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 15px 60px 10px 60px;
+            border-bottom: 1px solid #e5e7eb;
+            flex-shrink: 0;
+        }
+        .nav-item {
+            font-size: 16px;
+            font-weight: 500;
+            color: #9ca3af;
+            padding: 5px;
+            position: relative;
+        }
+        .nav-item.active {
+            color: #4f46e5;
+            font-weight: 700;
+        }
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #6366f1;
+        }
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 25px 60px 40px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 900;
+            color: #1f2937;
+        }
+        .subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            color: #4b5563;
+            margin-top: 4px;
+        }
+        .title-divider {
+            width: 80px;
+            height: 4px;
+            background-color: #6366f1;
+            margin-top: 15px;
+        }
+        .image-placeholder {
+            background-color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            border: 2px dashed #9ca3af;
+        }
+        .placeholder-text {
+            color: #6b7280;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title Page -->
+    <div class="slide active" style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); flex-direction: column; justify-content: center; align-items: center; padding: 40px; position: relative;">
+        <div class="text-center">
+            <h1 style="font-size: 120px; font-weight: 900; color: #4f46e5; letter-spacing: -2px;">IoLaundry</h1>
+            <hr style="width: 50%; height: 2px; background-color: #6366f1; margin: 30px auto;">
+            <p style="font-size: 32px; font-weight: 500; color: #374151; margin-top: -10px;">Vision AI와 IoT를 활용한 스마트 세탁 분류 시스템</p>
+        </div>
+        <div style="position: absolute; bottom: 60px; text-align: center; font-size: 20px; color: #4b5563;">
+            <p style="font-weight: 700; margin-bottom: 8px;"><i class="fas fa-users mr-2"></i>IoLaundry (3조)</p>
+            <p>김선재, 이성윤, 차요준</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Index -->
+    <div class="slide" style="padding: 80px;">
+        <div style="width: 30%; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 20px;">
+            <h2 style="font-size: 72px; font-weight: 900; color: #374151; line-height: 1;">INDEX</h2>
+            <div style="width: 100px; height: 6px; background-color: #6366f1; margin-top: 10px;"></div>
+        </div>
+        <div style="width: 70%; display: flex; flex-direction: column; gap: 15px; padding-left: 40px;">
+            <div style="display: flex; align-items: center; background-color: #f9fafb; padding: 15px 25px; border-radius: 12px; border-left: 8px solid #6366f1;"><div style="font-size: 32px; color: #6366f1; margin-right: 25px; width: 45px; text-align: center;"><i class="fas fa-clipboard-list"></i></div><div><div style="font-size: 16px; font-weight: 500; color: #9ca3af; margin-bottom: 2px;">Chapter 1</div><div style="font-size: 24px; font-weight: 700; color: #1f2937;">요구사항 분석</div></div></div>
+            <div style="display: flex; align-items: center; background-color: #f9fafb; padding: 15px 25px; border-radius: 12px; border-left: 8px solid #6366f1;"><div style="font-size: 32px; color: #6366f1; margin-right: 25px; width: 45px; text-align: center;"><i class="fas fa-database"></i></div><div><div style="font-size: 16px; font-weight: 500; color: #9ca3af; margin-bottom: 2px;">Chapter 2</div><div style="font-size: 24px; font-weight: 700; color: #1f2937;">사용 데이터셋</div></div></div>
+            <div style="display: flex; align-items: center; background-color: #f9fafb; padding: 15px 25px; border-radius: 12px; border-left: 8px solid #6366f1;"><div style="font-size: 32px; color: #6366f1; margin-right: 25px; width: 45px; text-align: center;"><i class="fas fa-brain"></i></div><div><div style="font-size: 16px; font-weight: 500; color: #9ca3af; margin-bottom: 2px;">Chapter 3</div><div style="font-size: 24px; font-weight: 700; color: #1f2937;">사용 모델 & 학습 과정</div></div></div>
+            <div style="display: flex; align-items: center; background-color: #f9fafb; padding: 15px 25px; border-radius: 12px; border-left: 8px solid #6366f1;"><div style="font-size: 32px; color: #6366f1; margin-right: 25px; width: 45px; text-align: center;"><i class="fas fa-rocket"></i></div><div><div style="font-size: 16px; font-weight: 500; color: #9ca3af; margin-bottom: 2px;">Chapter 4</div><div style="font-size: 24px; font-weight: 700; color: #1f2937;">실제 사용 예시 및 기대 효과</div></div></div>
+            <div style="display: flex; align-items: center; background-color: #f9fafb; padding: 15px 25px; border-radius: 12px; border-left: 8px solid #6366f1;"><div style="font-size: 32px; color: #6366f1; margin-right: 25px; width: 45px; text-align: center;"><i class="fas fa-lightbulb"></i></div><div><div style="font-size: 16px; font-weight: 500; color: #9ca3af; margin-bottom: 2px;">Chapter 5</div><div style="font-size: 24px; font-weight: 700; color: #1f2937;">추가적인 발전 방향성</div></div></div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Problem Examples -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item active">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 25px;"><h2 class="title">1. 요구사항 분석</h2><p class="subtitle">세탁, 사소한 실수가 부르는 큰 문제</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden;"><div style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border-bottom: 1px solid #e5e7eb;"><i class="fas fa-tint" style="font-size: 22px; color: #6366f1;"></i><h3 style="font-size: 20px; font-weight: 700; color: #111827;">실제 이염 사례</h3></div><div class="image-placeholder" style="flex-grow: 1; margin: 20px;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-image text-3xl"></i><span>이염된 옷 이미지</span></div></div></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden;"><div style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border-bottom: 1px solid #e5e7eb;"><i class="fas fa-exclamation-triangle" style="font-size: 22px; color: #6366f1;"></i><h3 style="font-size: 20px; font-weight: 700; color: #111827;">실제 옷 손상 사례</h3></div><div class="image-placeholder" style="flex-grow: 1; margin: 20px;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-image text-3xl"></i><span>손상된 옷 이미지</span></div></div></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; overflow: hidden;"><div style="display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border-bottom: 1px solid #e5e7eb;"><i class="fas fa-compress-arrows-alt" style="font-size: 22px; color: #6366f1;"></i><h3 style="font-size: 20px; font-weight: 700; color: #111827;">실제 옷 줄어듦 사례</h3></div><div class="image-placeholder" style="flex-grow: 1; margin: 20px;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-image text-3xl"></i><span>줄어든 옷 이미지</span></div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Problem Analysis -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item active">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 20px;"><h2 class="title">1-2. 문제 현황 분석</h2><p class="subtitle">수치와 데이터로 보는 세탁 문제의 보편성</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; padding: 25px 30px; border-radius: 12px; position: relative;"><h3 style="font-size: 22px; font-weight: 700; color: #111827; margin-bottom: 15px; text-align: center; width: 100%;">의류별 권장 세탁법 비율</h3><div style="flex-grow: 1; display: flex; justify-content: center; align-items: center;"><div style="width: 200px; height: 200px; border-radius: 50%; background-image: conic-gradient(#4f46e5 0 72%, #818cf8 0 90%, #c7d2fe 0 100%);"></div></div><div style="padding-bottom: 15px;"><div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;"><div style="display: flex; align-items: center; font-size: 16px; font-weight: 500;"><div style="width: 16px; height: 16px; border-radius: 4px; margin-right: 10px; flex-shrink: 0; background-color: #4f46e5;"></div><span><b>기계 세탁 가능</b> (72%)</span></div><div style="display: flex; align-items: center; font-size: 16px; font-weight: 500;"><div style="width: 16px; height: 16px; border-radius: 4px; margin-right: 10px; flex-shrink: 0; background-color: #818cf8;"></div><span><b>손세탁 & 유의 필요</b> (18%)</span></div><div style="display: flex; align-items: center; font-size: 16px; font-weight: 500;"><div style="width: 16px; height: 16px; border-radius: 4px; margin-right: 10px; flex-shrink: 0; background-color: #c7d2fe;"></div><span><b>드라이클리닝</b> (10%)</span></div></div></div><p style="position: absolute; bottom: 15px; right: 25px; font-size: 12px; color: #9ca3af;">출처: 국내외 시장 조사 기관 및 섬유 산업 통계 자료 종합 분석</p></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; padding: 25px 30px; border-radius: 12px; position: relative;"><h3 style="font-size: 22px; font-weight: 700; color: #111827; margin-bottom: 15px; text-align: center; width: 100%;">세탁 관련 불편함 키워드 분석</h3><div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 10px 0;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" style="max-width: 100%; max-height: 100%;"><text transform="translate(250, 150) rotate(-20)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="900" font-size="65" fill="#4f46e5">수축</text><text transform="translate(130, 140) rotate(-10)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="900" font-size="55" fill="#6366f1">이염</text><text transform="translate(370, 165) rotate(20)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="900" font-size="48" fill="#818cf8">손상</text><text transform="translate(255, 230) rotate(-30)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="35" fill="#4b5563">시간낭비</text><text transform="translate(180, 210) rotate(20)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="38" fill="#6366f1">귀찮음</text><text transform="translate(350, 80) rotate(-15)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="30" fill="#4b5563">불안함</text><text transform="translate(140, 70) rotate(15)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="28" fill="#818cf8">고민</text><text transform="translate(250, 70) rotate(0)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="24" fill="#4b5563">라벨확인</text><text transform="translate(400, 240) rotate(0)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="22" fill="#9ca3af">실패</text><text transform="translate(100, 240) rotate(-5)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="20" fill="#9ca3af">후회</text><text transform="translate(400, 205) rotate(-25)" text-anchor="middle" alignment-baseline="middle" font-family="Noto Sans KR" font-weight="700" font-size="18" fill="#9ca3af">변색</text></svg></div><p style="position: absolute; bottom: 15px; right: 25px; font-size: 12px; color: #9ca3af;">출처: 주요 온라인 커뮤니티 '세탁' 관련 게시물 약 5만 건 분석</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Dataset Introduction -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item active">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">2. 사용 데이터셋</h2><p class="subtitle">학습과 검증을 위한 이원화 데이터 전략</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px 30px 30px 30px;"><h3 style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 32px; font-weight: 900; color: #111827; text-align: center; margin-bottom: 15px;"><span>원단 데이터</span><span style="font-size: 16px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; color: white; background-color: #4f46e5;">학습용</span></h3><div class="image-placeholder" style="width: 100%; height: 200px; margin-bottom: 25px;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-image text-4xl"></i><span>원단 근접 촬영 이미지</span></div></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;"><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>해상도:</b> 400x400 픽셀로 규격화</div></li><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>핵심 특징:</b> 원단의 고유한 질감과 패턴에 집중</div></li><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>데이터 양:</b> 약 7,000개 이미지</div></li><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>역할:</b> Vision AI 모델의 재질 분류 능력 학습</div></li></ul></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px 30px 30px 30px;"><h3 style="display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 32px; font-weight: 900; color: #111827; text-align: center; margin-bottom: 15px;"><span>의류 데이터</span><span style="font-size: 16px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; color: white; background-color: #10b981;">검증용</span></h3><div class="image-placeholder" style="width: 100%; height: 200px; margin-bottom: 25px;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-image text-4xl"></i><span>실제 의류 촬영 이미지</span></div></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;"><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>해상도:</b> 고화질 원본 이미지</div></li><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>핵심 특징:</b> 실제 환경의 조명, 구김, 형태 등 포함</div></li><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>데이터 양:</b> 약 20개 이미지</div></li><li style="display: flex; align-items: flex-start; font-size: 17px; color: #374151;"><i class="fas fa-check-circle" style="color: #6366f1; margin-right: 12px; margin-top: 5px;"></i><div><b>역할:</b> 학습된 모델의 실전 성능 및 일반화 능력 검증</div></li></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Dataset Structure -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item active">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 20px;"><h2 class="title">2-1. 원단 데이터셋 분석: 기본 구조</h2><div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px;"><p class="subtitle">클래스 분포 및 폴더 구조</p><p style="font-size: 18px; font-weight: 700; color: #374151;">Total Images: 7,815</p></div><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; flex-grow: 1; align-items: stretch;">
+                <div class="image-placeholder" style="width: 100%; height: 100%; background-color: #f9fafb; border: 1px solid #e5e7eb;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-folder-tree text-6xl mb-4"></i><br>데이터셋 폴더 구조 스크린샷</div></div>
+                <div style="display: flex; flex-direction: column; height: 100%;">
+                    <div style="display: flex; gap: 20px; flex-grow: 1;">/
+                        <div style="flex: 1;"><table style="width: 100%; border-collapse: collapse; font-size: 15px;"><thead><tr><th style="padding: 4.5px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700; color: #374151;">No</th><th style="padding: 4.5px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700; color: #374151;">Class</th><th style="padding: 4.5px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700; color: #374151;">Total</th></tr></thead><tbody><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">1</td><td style="padding: 4.5px 15px;">Acrylic</td><td style="padding: 4.5px 15px;">48</td></tr><tr><td style="padding: 4.5px 15px;">2</td><td style="padding: 4.5px 15px;">Artificial_fur</td><td style="padding: 4.5px 15px;">4</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">3</td><td style="padding: 4.5px 15px;">Artificial_leather</td><td style="padding: 4.5px 15px;">12</td></tr><tr><td style="padding: 4.5px 15px;">4</td><td style="padding: 4.5px 15px;">Blended</td><td style="padding: 4.5px 15px;">1645</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">5</td><td style="padding: 4.5px 15px;">Chenille</td><td style="padding: 4.5px 15px;">52</td></tr><tr><td style="padding: 4.5px 15px;">6</td><td style="padding: 4.5px 15px;">Corduroy</td><td style="padding: 4.5px 15px;">96</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">7</td><td style="padding: 4.5px 15px;">Cotton</td><td style="padding: 4.5px 15px;">2352</td></tr><tr><td style="padding: 4.5px 15px;">8</td><td style="padding: 4.5px 15px;">Crepe</td><td style="padding: 4.5px 15px;">104</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">9</td><td style="padding: 4.5px 15px;">Denim</td><td style="padding: 4.5px 15px;">648</td></tr><tr><td style="padding: 4.5px 15px;">10</td><td style="padding: 4.5px 15px;">Felt</td><td style="padding: 4.5px 15px;">16</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">11</td><td style="padding: 4.5px 15px;">Fleece</td><td style="padding: 4.5px 15px;">132</td></tr><tr><td style="padding: 4.5px 15px;">12</td><td style="padding: 4.5px 15px;">Leather</td><td style="padding: 4.5px 15px;">64</td></tr></tbody></table></div>
+                        <div style="flex: 1;"><table style="width: 100%; border-collapse: collapse; font-size: 15px;"><thead><tr><th style="padding: 4.5px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700; color: #374151;">No</th><th style="padding: 4.5px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700; color: #374151;">Class</th><th style="padding: 4.5px 15px; text-align: left; border-bottom: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700; color: #374151;">Total</th></tr></thead><tbody><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">13</td><td style="padding: 4.5px 15px;">Linen</td><td style="padding: 4.5px 15px;">76</td></tr><tr><td style="padding: 4.5px 15px;">14</td><td style="padding: 4.5px 15px;">Lut</td><td style="padding: 4.5px 15px;">16</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">15</td><td style="padding: 4.5px 15px;">Nylon</td><td style="padding: 4.5px 15px;">228</td></tr><tr><td style="padding: 4.5px 15px;">16</td><td style="padding: 4.5px 15px;">Polyester</td><td style="padding: 4.5px 15px;">904</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">17</td><td style="padding: 4.5px 15px;">Satin</td><td style="padding: 4.5px 15px;">96</td></tr><tr><td style="padding: 4.5px 15px;">18</td><td style="padding: 4.5px 15px;">Silk</td><td style="padding: 4.5px 15px;">200</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">19</td><td style="padding: 4.5px 15px;">Suede</td><td style="padding: 4.5px 15px;">20</td></tr><tr><td style="padding: 4.5px 15px;">20</td><td style="padding: 4.5px 15px;">Terrycloth</td><td style="padding: 4.5px 15px;">120</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">21</td><td style="padding: 4.5px 15px;">Utilities</td><td style="padding: 4.5px 15px;">8</td></tr><tr><td style="padding: 4.5px 15px;">22</td><td style="padding: 4.5px 15px;">Velvet</td><td style="padding: 4.5px 15px;">44</td></tr><tr style="background-color: #f9fafb;"><td style="padding: 4.5px 15px;">23</td><td style="padding: 4.5px 15px;">Viscose</td><td style="padding: 4.5px 15px;">148</td></tr><tr><td style="padding: 4.5px 15px;">24</td><td style="padding: 4.5px 15px;">Wool</td><td style="padding: 4.5px 15px;">360</td></tr></tbody></table></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Fabric Dataset Analysis -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item active">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">2-2. 원단 데이터셋 분석: 샘플 시각화</h2><p class="subtitle">학습 데이터의 품질과 일관성 확인</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px; flex-grow: 1; align-items: center;">
+                <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"><div class="image-placeholder" style="width: 100%; height: 450px;"><div class="placeholder-text" style="font-size: 20px;"><i class="fas fa-search-plus text-6xl mb-4"></i><br>고품질 원단 샘플 이미지</div></div></div>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 25px;"><li style="display: flex; align-items: flex-start; font-size: 20px; color: #374151; line-height: 1.6;"><i class="fas fa-check-square" style="font-size: 24px; color: #6366f1; margin-right: 15px; margin-top: 5px;"></i><div><b>배경이 포함되지 않은</b> 이미지</div></li><li style="display: flex; align-items: flex-start; font-size: 20px; color: #374151; line-height: 1.6;"><i class="fas fa-check-square" style="font-size: 24px; color: #6366f1; margin-right: 15px; margin-top: 5px;"></i><div>원단의 <b>고유한 패턴과 질감</b>을 확인할 수 있음</div></li><li style="display: flex; align-items: flex-start; font-size: 20px; color: #374151; line-height: 1.6;"><i class="fas fa-check-square" style="font-size: 24px; color: #6366f1; margin-right: 15px; margin-top: 5px;"></i><div>원단과 촬영 각도가 정확하게 <b>수직</b></div></li><li style="display: flex; align-items: flex-start; font-size: 20px; color: #374151; line-height: 1.6;"><i class="fas fa-check-square" style="font-size: 24px; color: #6366f1; margin-right: 15px; margin-top: 5px;"></i><div><b>400 x 400</b>의 일관된 해상도</div></li><li style="display: flex; align-items: flex-start; font-size: 20px; color: #374151; line-height: 1.6;"><i class="fas fa-check-square" style="font-size: 24px; color: #6366f1; margin-right: 15px; margin-top: 5px;"></i><div><b>다양한 색상</b>이 고르게 분포되어 있음</div></li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: t-SNE Visualization -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item active">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 20px;"><h2 class="title">2-3. 원단 데이터셋 분석: 차원 축소 시각화</h2><p class="subtitle">t-SNE를 이용한 데이터 분포 및 잠재적 문제점 확인</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 7fr 3fr; gap: 40px; flex-grow: 1; align-items: center;">
+                <div class="image-placeholder" style="width: 100%; height: 480px; background-color: #f9fafb; border: 1px solid #e5e7eb;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-project-diagram text-6xl mb-4"></i><br>t-SNE 클러스터링 그래프</div></div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background-color: #f9fafb; border-radius: 12px; padding: 20px; border-left: 5px solid #10b981;"><h4 style="display: flex; align-items: center; font-size: 18px; font-weight: 700; margin-bottom: 12px; color: #059669;"><i class="fas fa-check-circle" style="margin-right: 10px;"></i>명확한 군집 형성 (긍정)</h4><ul style="font-size: 16px; color: #374151; line-height: 1.7; list-style-type: none; padding-left: 5px;"><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }><b>독립적인 군집 형성</b> (Denim)</li><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }><b>높은 분류 정확도</b> 예상</li></ul></div>
+                    <div style="background-color: #f9fafb; border-radius: 12px; padding: 20px; border-left: 5px solid #ef4444;"><h4 style="display: flex; align-items: center; font-size: 18px; font-weight: 700; margin-bottom: 12px; color: #dc2626;"><i class="fas fa-exclamation-triangle" style="margin-right: 10px;"></i>클래스 간 혼재 (문제)</h4><ul style="font-size: 16px; color: #374151; line-height: 1.7; list-style-type: none; padding-left: 5px;"><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }><b>유사 클래스 간 특징 중첩</b></li><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }><b>오분류 가능성 높음</b></li><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }>(Blended, Cotton 등)</li></ul></div>
+                    <div style="background-color: #f9fafb; border-radius: 12px; padding: 20px; border-left: 5px solid #f59e0b;"><h4 style="display: flex; align-items: center; font-size: 18px; font-weight: 700; margin-bottom: 12px; color: #d97706;"><i class="fas fa-lightbulb" style="margin-right: 10px;"></i>전략 수립의 필요성 (시사점)</h4><ul style="font-size: 16px; color: #374151; line-height: 1.7; list-style-type: none; padding-left: 5px;"><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }><b>데이터 불균형</b> 문제 해결 필요</li><li style="position: relative; padding-left: 18px;"><li::before { content: '·'; position: absolute; left: 0; font-weight: 900; color: #9ca3af; }><b>유사 클래스 구분</b> 전략 필수</li></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Pixel Distribution -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item active">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 20px;"><h2 class="title">2-4. 원단 데이터셋 분석: 픽셀 값 분포</h2><p class="subtitle">이미지 밝기 및 대비(Contrast) 분포 분석</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 4fr 2fr; gap: 40px; flex-grow: 1; align-items: center;">
+                <div class="image-placeholder" style="width: 100%; height: 420px; background-color: #f9fafb; border: 1px solid #e5e7eb;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-chart-bar text-6xl mb-4"></i><br>이미지 밝기 및 대비 분포 그래프</div></div>
+                <div style="display: flex; flex-direction: column; justify-content: center; gap: 30px; height: 100%;">
+                    <div style="background-color: #f9fafb; border-radius: 12px; padding: 25px;"><h4 style="display: flex; align-items: center; font-size: 20px; font-weight: 700; color: #1f2937; margin-bottom: 15px;"><i class="fas fa-sun" style="font-size: 24px; margin-right: 12px; color: #6366f1;"></i>밝기(Brightness) 분석</h4><ul style="font-size: 17px; color: #374151; line-height: 1.8; list-style-type: none; padding-left: 5px;"><li style="position: relative; padding-left: 20px; margin-bottom: 10px;"><li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: #4f46e5; }>전반적으로 <b>어두운 이미지</b>에 편중</li><li style="position: relative; padding-left: 20px; margin-bottom: 0;"><li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: #4f46e5; }><b>조명 환경의 일관성</b></li></ul></div>
+                    <div style="background-color: #f9fafb; border-radius: 12px; padding: 25px;"><h4 style="display: flex; align-items: center; font-size: 20px; font-weight: 700; color: #1f2937; margin-bottom: 15px;"><i class="fas fa-adjust" style="font-size: 24px; margin-right: 12px; color: #6366f1;"></i>대비(Contrast) 분석</h4><ul style="font-size: 17px; color: #374151; line-height: 1.8; list-style-type: none; padding-left: 5px;"><li style="position: relative; padding-left: 20px; margin-bottom: 10px;"><li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: #4f46e5; }><b>명암 대비가 낮은</b> 이미지 다수 분포</li><li style="position: relative; padding-left: 20px; margin-bottom: 0;"><li::before { content: '✓'; position: absolute; left: 0; font-weight: 900; color: #4f46e5; }>고유의 <b>질감 특징 추출</b> 난이도 상승 예상</li></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Preprocessing -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item active">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 30px;"><h2 class="title">2-5. 데이터셋 전처리 과정</h2><p class="subtitle">데이터 분석 기반의 문제 해결 및 성능 최적화 전략</p><div class="title-divider"></div></div>
+            <div style="display: flex; flex-direction: column; gap: 20px; padding: 10px 0;">
+                <div style="display: flex; align-items: center; gap: 20px;"><div style="width: 250px; display: flex; align-items: center; font-size: 24px; font-weight: 700; color: #1f2937; flex-shrink: 0;"><i class="fas fa-expand-arrows-alt" style="font-size: 28px; color: #4f46e5; margin-right: 15px; width: 35px; text-align: center;"></i>Resize</div><div style="font-size: 28px; color: #9ca3af;"><i class="fas fa-long-arrow-alt-right"></i></div><div style="flex-grow: 1; background-color: #f9fafb; border-radius: 12px; padding: 18px 25px; display: flex; flex-wrap: wrap; gap: 12px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">데이터 표준화</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">모델 입력 규격 통일</span></div></div>
+                <div style="display: flex; align-items: center; gap: 20px;"><div style="width: 250px; display: flex; align-items: center; font-size: 24px; font-weight: 700; color: #1f2937; flex-shrink: 0;"><i class="fas fa-palette" style="font-size: 28px; color: #4f46e5; margin-right: 15px; width: 35px; text-align: center;"></i>Grayscale</div><div style="font-size: 28px; color: #9ca3af;"><i class="fas fa-long-arrow-alt-right"></i></div><div style="flex-grow: 1; background-color: #f9fafb; border-radius: 12px; padding: 18px 25px; display: flex; flex-wrap: wrap; gap: 12px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">색상 정보 제거</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">질감/패턴 특징 집중</span></div></div>
+                <div style="display: flex; align-items: center; gap: 20px;"><div style="width: 250px; display: flex; align-items: center; font-size: 24px; font-weight: 700; color: #1f2937; flex-shrink: 0;"><i class="fas fa-exchange-alt" style="font-size: 28px; color: #4f46e5; margin-right: 15px; width: 35px; text-align: center;"></i>Flip</div><div style="font-size: 28px; color: #9ca3af;"><i class="fas fa-long-arrow-alt-right"></i></div><div style="flex-grow: 1; background-color: #f9fafb; border-radius: 12px; padding: 18px 25px; display: flex; flex-wrap: wrap; gap: 12px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">데이터 증강 (Augmentation)</span></div></div>
+                <div style="display: flex; align-items: center; gap: 20px;"><div style="width: 250px; display: flex; align-items: center; font-size: 24px; font-weight: 700; color: #1f2937; flex-shrink: 0;"><i class="fas fa-sync-alt" style="font-size: 28px; color: #4f46e5; margin-right: 15px; width: 35px; text-align: center;"></i>RandomRotation</div><div style="font-size: 28px; color: #9ca3af;"><i class="fas fa-long-arrow-alt-right"></i></div><div style="flex-grow: 1; background-color: #f9fafb; border-radius: 12px; padding: 18px 25px; display: flex; flex-wrap: wrap; gap: 12px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">데이터 증강 (Augmentation)</span></div></div>
+                <div style="display: flex; align-items: center; gap: 20px;"><div style="width: 250px; display: flex; align-items: center; font-size: 24px; font-weight: 700; color: #1f2937; flex-shrink: 0;"><i class="fas fa-sliders-h" style="font-size: 28px; color: #4f46e5; margin-right: 15px; width: 35px; text-align: center;"></i>정규화</div><div style="font-size: 28px; color: #9ca3af;"><i class="fas fa-long-arrow-alt-right"></i></div><div style="flex-grow: 1; background-color: #f9fafb; border-radius: 12px; padding: 18px 25px; display: flex; flex-wrap: wrap; gap: 12px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">픽셀 값 스케일 조정</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 16px; font-weight: 700; padding: 6px 14px; border-radius: 9999px;">학습 안정성 확보</span></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Model Selection -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item active">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 20px;"><h2 class="title">3. 사용 모델 및 학습 과정</h2><p class="subtitle">3-1. 최적 모델 선정을 위한 비교 실험</p><div class="title-divider"></div></div>
+            <div style="background-color: #f3f4f6; border-left: 5px solid #6366f1; padding: 15px 20px; margin-bottom: 25px; display: flex; align-items: center; font-size: 16px; font-weight: 500; color: #374151;"><i class="fas fa-balance-scale-right" style="font-size: 20px; color: #6366f1; margin-right: 15px;"></i><b>동일 조건:</b> 동일 데이터셋 / 동일 전처리 방식 / 동일 학습 환경</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; position: relative;"><h3 style="font-size: 28px; font-weight: 900; color: #111827; text-align: center; margin-bottom: 8px;">ResNet50</h3><p style="text-align: center; font-size: 15px; font-weight: 700; color: #4f46e5; margin-bottom: 15px;"><i class="fas fa-landmark"></i> 안정적인 베이스라인</p><div style="margin-bottom: 15px;"><h4 style="font-size: 14px; font-weight: 700; color: #6b7280; margin-bottom: 8px;">주요 실험 내용</h4><div style="display: flex; flex-wrap: wrap; gap: 6px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">상위 클래스 분류</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">클래스 그룹화</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">Grayscale</span></div></div><div style="margin-top: auto; background-color: #fff; border-radius: 8px; padding: 15px; text-align: center;"><p style="font-size: 16px; font-weight: 700; color: #4b5563;">F1 Score</p><p style="font-size: 42px; font-weight: 900; color: #1f2937;">0.7368</p></div></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; position: relative;"><h3 style="font-size: 28px; font-weight: 900; color: #111827; text-align: center; margin-bottom: 8px;">EfficientNet</h3><p style="text-align: center; font-size: 15px; font-weight: 700; color: #4f46e5; margin-bottom: 15px;"><i class="fas fa-bolt"></i> 높은 연산 효율성</p><div style="margin-bottom: 15px;"><h4 style="font-size: 14px; font-weight: 700; color: #6b7280; margin-bottom: 8px;">주요 실험 내용</h4><div style="display: flex; flex-wrap: wrap; gap: 6px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">TOP 12 분류</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">RandomCrop</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">Epoch 변경</span></div></div><div style="margin-top: auto; background-color: #fff; border-radius: 8px; padding: 15px; text-align: center;"><p style="font-size: 16px; font-weight: 700; color: #4b5563;">F1 Score</p><p style="font-size: 42px; font-weight: 900; color: #1f2937;">0.6199</p></div></div>
+                <div style="display: flex; flex-direction: column; background-color: #eef2ff; border: 2px solid #4f46e5; border-radius: 12px; padding: 20px; position: relative;"><div style="position: absolute; top: 15px; right: 15px; background-color: #4f46e5; color: white; font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 9999px;">선택 모델</div><h3 style="font-size: 28px; font-weight: 900; color: #111827; text-align: center; margin-bottom: 8px;">ConvNeXt</h3><p style="text-align: center; font-size: 15px; font-weight: 700; color: #4f46e5; margin-bottom: 15px;"><i class="fas fa-rocket"></i> 최신 SOTA 아키텍처</p><div style="margin-bottom: 15px;"><h4 style="font-size: 14px; font-weight: 700; color: #6b7280; margin-bottom: 8px;">주요 실험 내용</h4><div style="display: flex; flex-wrap: wrap; gap: 6px;"><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">TOP 12 분류</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">클래스 그룹화</span><span style="background-color: #e0e7ff; color: #3730a3; font-size: 14px; font-weight: 700; padding: 2px 10px; border-radius: 9999px;">RandomCrop</span></div></div><div style="margin-top: auto; background-color: #fff; border-radius: 8px; padding: 15px; text-align: center;"><p style="font-size: 16px; font-weight: 700; color: #4b5563;">F1 Score</p><p style="font-size: 42px; font-weight: 900; color: #4f46e5;">0.7721</p></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Final Model Intro -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item active">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">3-2. 최종 모델: ConvNeXt V2 Tiny</h2><p class="subtitle">선택 이유, 강점 및 핵심 구조</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; flex-grow: 1; align-items: flex-start;">
+                <div>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px;">
+                        <li style="display: flex; align-items: flex-start;"><div style="font-size: 28px; color: #4f46e5; margin-right: 20px; width: 35px; text-align: center; margin-top: 5px;"><i class="fas fa-trophy"></i></div><div><h4 style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 5px;">압도적인 성능</h4><p style="font-size: 16px; color: #4b5563; line-height: 1.6;">최신 SOTA 아키텍처 기반의 가장 높은 분류 정확도</p></div></li>
+                        <li style="display: flex; align-items: flex-start;"><div style="font-size: 28px; color: #4f46e5; margin-right: 20px; width: 35px; text-align: center; margin-top: 5px;"><i class="fas fa-sitemap"></i></div><div><h4 style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 5px;">검증된 안정성 + 최신 기술</h4><p style="font-size: 16px; color: #4b5563; line-height: 1.6;">전통적인 CNN 구조 + Transformer 장점 => 하이브리드 아키텍처</p></div></li>
+                        <li style="display: flex; align-items: flex-start;"><div style="font-size: 28px; color: #4f46e5; margin-right: 20px; width: 35px; text-align: center; margin-top: 5px;"><i class="fas fa-tachometer-alt"></i></div><div><h4 style="font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 5px;">현실적인 효율성 (Tiny)</h4><p style="font-size: 16px; color: #4b5563; line-height: 1.6;">실제 서비스 환경을 고려한 성능과 속도의 최적 균형점</p><table style="margin-top: 10px; width: 100%; border-collapse: collapse; font-size: 16px; border: 1px solid #e5e7eb;"><thead style="font-size: 15px;"><tr><th style="padding: 10px 8px; text-align: center; border: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700;">Model</th><th style="padding: 10px 8px; text-align: center; border: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700;">Accuracy</th><th style="padding: 10px 8px; text-align: center; border: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700;">Params</th><th style="padding: 10px 8px; text-align: center; border: 1px solid #e5e7eb; background-color: #f3f4f6; font-weight: 700;">추론 시간 (Tiny 대비)</th></tr></thead><tbody><tr style="background-color: #eef2ff; font-weight: 700; color: #4338ca;"><td style="border: 1px solid #e5e7eb; padding: 8px;">Tiny</td><td style="border: 1px solid #e5e7eb; padding: 8px;">82.8%</td><td style="border: 1px solid #e5e7eb; padding: 8px;">28.6M</td><td style="border: 1px solid #e5e7eb; padding: 8px;">기준 속도</td></tr><tr style="border: 1px solid #e5e7eb;"><td style="border: 1px solid #e5e7eb; padding: 8px;">Small</td><td style="border: 1px solid #e5e7eb; padding: 8px;">83.8%</td><td style="border: 1px solid #e5e7eb; padding: 8px;">50.2M</td><td style="border: 1px solid #e5e7eb; padding: 8px;">+40% 소요</td></tr><tr style="border: 1px solid #e5e7eb;"><td style="border: 1px solid #e5e7eb; padding: 8px;">Base</td><td style="border: 1px solid #e5e7eb; padding: 8px;">84.5%</td><td style="border: 1px solid #e5e7eb; padding: 8px;">88.6M</td><td style="border: 1px solid #e5e7eb; padding: 8px;">+120% 소요</td></tr><tr style="border: 1px solid #e5e7eb;"><td style="border: 1px solid #e5e7eb; padding: 8px;">Large</td><td style="border: 1px solid #e5e7eb; padding: 8px;">85.1%</td><td style="border: 1px solid #e5e7eb; padding: 8px;">197.8M</td><td style="border: 1px solid #e5e7eb; padding: 8px;">+350% 소요</td></tr></tbody></table></div></li>
+                    </ul>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; margin-top: 20px;">
+                    <div style="width: 100%; background-color: #eef2ff; border: 2px solid #a5b4fc; border-radius: 12px; padding: 20px; text-align: center;"><h4 style="font-size: 18px; font-weight: 900; color: #4338ca; margin-bottom: 10px;"><i class="fas fa-layer-group"></i> ViT-inspired Designs (최신 설계)</h4><p style="font-size: 15px; color: #4f46e5;">큰 커널(7x7), Inverted Bottleneck, Layer Normalization</p></div>
+                    <i class="fas fa-chevron-down" style="font-size: 24px; color: #d1d5db;"></i>
+                    <div style="width: 90%; background-color: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; text-align: center;"><h4 style="font-size: 18px; font-weight: 900; color: #1f2937; margin-bottom: 10px;">ResNet Architecture (검증된 구조)</h4><p style="font-size: 15px; color: #4b5563;">Skip Connection을 통한 안정적인 깊은 네트워크 학습</p></div>
+                    <i class="fas fa-chevron-down" style="font-size: 24px; color: #d1d5db;"></i>
+                    <div style="width: 80%; background-color: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; text-align: center;"><h4 style="font-size: 18px; font-weight: 900; color: #1f2937; margin-bottom: 10px;">CNN Principles (기반 원리)</h4><p style="font-size: 15px; color: #4b5563;">Convolution을 통한 효율적인 이미지 특징 추출</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Model Optimization -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item active">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">3-3. 모델 성능 최적화 과정</h2><p class="subtitle">문제점 진단 및 해결을 통한 점진적 성능 향상</p><div class="title-divider"></div></div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: grid; grid-template-columns: 1fr auto 2fr; align-items: center; gap: 20px;"><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #fffbeb; border-color: #f59e0b; color: #b45309;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">극단적인 데이터 불균형</div></div><i class="fas fa-long-arrow-alt-right" style="font-size: 24px; color: #9ca3af;"></i><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #ecfdf5; border-color: #10b981; color: #047857;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">상위 10개 원단 클래스만 학습</div></div></div>
+                <div style="display: grid; grid-template-columns: 1fr auto 2fr; align-items: center; gap: 20px;"><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #fffbeb; border-color: #f59e0b; color: #b45309;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">Resize로 인한 패턴/질감 손실</div></div><i class="fas fa-long-arrow-alt-right" style="font-size: 24px; color: #9ca3af;"></i><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #ecfdf5; border-color: #10b981; color: #047857;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">RandomCrop으로 변경</div><div style="font-size: 15px; font-weight: 500; color: #059669; margin-top: 8px;">(데이터 증강, 과적합 방지, 패턴 및 질감 유지)</div></div></div>
+                <div style="display: grid; grid-template-columns: 1fr auto 2fr; align-items: center; gap: 20px;"><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #fffbeb; border-color: #f59e0b; color: #b45309;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">Grayscale로 인한 대비 상실</div></div><i class="fas fa-long-arrow-alt-right" style="font-size: 24px; color: #9ca3af;"></i><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #ecfdf5; border-color: #10b981; color: #047857;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">RGB 이미지로 학습</div></div></div>
+                <div style="display: grid; grid-template-columns: 1fr auto 2fr; align-items: center; gap: 20px;"><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #fffbeb; border-color: #f59e0b; color: #b45309;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">유사한 원단 간의 오분류</div></div><i class="fas fa-long-arrow-alt-right" style="font-size: 24px; color: #9ca3af;"></i><div style="padding: 15px 20px; border-radius: 10px; border-width: 1px; background-color: #ecfdf5; border-color: #10b981; color: #047857;"><div style="font-weight: 900; font-size: 18px; margin-bottom: 5px;">멀티태스크 모델로 변환</div><div style="font-size: 15px; font-weight: 500; color: #059669; margin-top: 8px;">(세탁법 라벨 추가 - 기계 세탁, 손세탁, 드라이클리닝)</div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Performance Analysis 1 -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item active">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header" style="margin-bottom: 20px;"><h2 class="title">3-4. 최종 모델 성능 분석 및 개선</h2><p class="subtitle">Confusion Matrix 기반의 문제점 진단 및 해결</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 40px; flex-grow: 1; align-items: center;">
+                <div class="image-placeholder" style="width: 100%; height: 480px; background-color: #f9fafb; border: 1px solid #e5e7eb;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-table text-6xl mb-4"></i><br>Normalized Confusion Matrix</div></div>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-chart-line"></i> 최종 성능 요약</h3><p style="font-size: 16px; color: #374151;">원단 분류 F1 Score: <b>0.7433</b></p><p style="font-size: 16px; color: #374151;">세탁법 분류 F1 Score: <b style="color: #059669; font-weight: 900;">0.9341</b></p></div>
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-search"></i> 문제점 발견</h3><p style="font-size: 16px; color: #374151;"><b>손세탁, 드라이클리닝</b> 클래스의 분류 성능이</p><p style="font-size: 16px; color: #374151;">상대적으로 <b style="color: #dc2626; font-weight: 900;">저조함</b></p></div>
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-balance-scale"></i> 근본 원인</h3><p style="font-size: 16px; color: #374151;"><b>'기계 세탁'</b> 데이터가 타 클래스 대비 <b>10:1</b> 비율</p><p style="font-size: 16px; color: #374151;"><b>클래스 불균형</b></p></div>
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-wrench"></i> 해결 전략</h3><p style="font-size: 16px; color: #374151;">소수 클래스(손세탁, 드라이)에 가중치를 부여</p><p style="font-size: 16px; color: #374151;"><b>클래스 가중치(Class Weighting)</b> 기법 적용</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 15: Final Model Validation -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item active">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">3-5. 최종 모델 검증 (클래스 가중치 적용 후)</h2><p class="subtitle">서비스 목표에 부합하는 모델로의 최종 개선</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 40px; flex-grow: 1; align-items: center;">
+                <div class="image-placeholder" style="width: 100%; height: 480px; background-color: #f9fafb; border: 1px solid #e5e7eb;"><div class="placeholder-text" style="font-size: 18px;"><i class="fas fa-table text-6xl mb-4"></i><br>Confusion Matrix (After Class Weighting)</div></div>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-chart-line"></i> 최종 성능 요약</h3><p style="font-size: 16px; color: #374151;">원단 분류 F1 Score: <b style="color: #dc2626; font-weight: 900;">0.6801 (하락)</b></p><p style="font-size: 16px; color: #374151;">세탁법 분류 F1 Score: <b style="color: #dc2626; font-weight: 900;">0.8363 (하락)</b></p></div>
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-check-circle"></i> 핵심 개선 사항</h3><p style="font-size: 16px; color: #374151;"><b>손세탁(delicate)</b> 정답률: 63% → <b style="color: #059669; font-weight: 900;">85% (상승)</b></p><p style="font-size: 16px; color: #374151;"><b>드라이(dry_clean)</b> 정답률: 53% → <b style="color: #059669; font-weight: 900;">93% (상승)</b></p></div>
+                    <div style="background-color: #f9fafb; border-radius: 10px; padding: 15px 20px;"><h3 style="font-size: 16px; font-weight: 700; color: #4f46e5; margin-bottom: 8px;"><i class="fas fa-bullseye"></i> 결론</h3><p style="font-size: 16px; color: #374151;">전체 점수는 하락했으나, <b>치명적 오류는 감소.</b></p><p style="font-size: 16px; color: #374151;"><b>서비스 목표에 더 적합한 모델</b>로 최종 완성.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 16: Grad-CAM -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item active">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">3-6. Grad-CAM을 활용한 실제 데이터 검증</h2><p class="subtitle">모델의 시각적 근거 확인 및 일반화 성능 검증</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; justify-content: center;"><div class="image-placeholder" style="height: 230px; border-bottom: none; border-radius: 8px 8px 0 0;"><div class="placeholder-text"><i class="fas fa-tshirt text-5xl mb-2"></i>구겨진 의류 (Original)</div></div><div class="image-placeholder" style="height: 230px; border-top: none; border-radius: 0 0 8px 8px;"><div class="placeholder-text"><i class="fas fa-fire text-5xl mb-2"></i>Grad-CAM Result</div></div></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; justify-content: center;"><div class="image-placeholder" style="height: 230px; border-bottom: none; border-radius: 8px 8px 0 0;"><div class="placeholder-text"><i class="fas fa-tshirt text-5xl mb-2"></i>어두운 조명 (Original)</div></div><div class="image-placeholder" style="height: 230px; border-top: none; border-radius: 0 0 8px 8px;"><div class="placeholder-text"><i class="fas fa-fire text-5xl mb-2"></i>Grad-CAM Result</div></div></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; padding: 20px; justify-content: center;"><div class="image-placeholder" style="height: 230px; border-bottom: none; border-radius: 8px 8px 0 0;"><div class="placeholder-text"><i class="fas fa-tshirt text-5xl mb-2"></i>복잡한 배경 (Original)</div></div><div class="image-placeholder" style="height: 230px; border-top: none; border-radius: 0 0 8px 8px;"><div class="placeholder-text"><i class="fas fa-fire text-5xl mb-2"></i>Grad-CAM Result</div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 17: Concept Image -->
+    <div class="slide" style="background-color: #f9fafb; flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item active">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div style="flex-grow: 1; padding: 40px 60px; display: flex; justify-content: center; align-items: center; gap: 50px;">
+            <div class="image-placeholder" style="width: 650px; height: 600px; border-radius: 20px; flex-shrink: 0;"><div class="placeholder-text" style="font-size: 24px;"><i class="fas fa-camera-retro text-8xl mb-4"></i><br>제품 컨셉 이미지</div></div>
+            <div style="text-align: left;"><h1 style="font-size: 72px; font-weight: 900; color: #1f2937; line-height: 1.2;">IoLaundry</h1><p style="font-size: 20px; font-weight: 500; color: #4f46e5; margin-top: 5px; border-left: 4px solid #4f46e5; padding-left: 15px;">스마트 세탁 분류 시스템</p></div>
+        </div>
+    </div>
+
+    <!-- Slide 18: Process (Input) -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item active">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">4. 실제 사용 예시 및 기대 효과</h2><p class="subtitle">4-1. IoLaundry 사용 프로세스 (입력)</p><div class="title-divider"></div></div>
+            <div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; gap: 40px;">
+                <div style="display: flex; flex-direction: column; align-items: center;"><div class="image-placeholder" style="width: 400px; height: 400px; background-color: #f9fafb; border: 1px solid #e5e7eb; margin-bottom: 20px;"><div class="placeholder-text" style="font-size: 20px;"><i class="fas fa-sign-in-alt text-8xl mb-4"></i><br>세탁물 투입 이미지</div></div><h3 style="font-size: 24px; font-weight: 700; color: #1f2937;">1. 세탁물 투입</h3></div>
+                <i class="fas fa-long-arrow-alt-right" style="font-size: 48px; color: #9ca3af;"></i>
+                <div style="display: flex; flex-direction: column; align-items: center;"><div class="image-placeholder" style="width: 400px; height: 400px; background-color: #f9fafb; border: 1px solid #e5e7eb; margin-bottom: 20px;"><div class="placeholder-text" style="font-size: 20px;"><i class="fas fa-camera text-8xl mb-4"></i><br>자동 촬영 이미지</div></div><h3 style="font-size: 24px; font-weight: 700; color: #1f2937;">2. 자동 촬영 및 분석</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 19: Process (Output) -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item active">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">4. 실제 사용 예시 및 기대 효과</h2><p class="subtitle">4-2. IoLaundry 사용 프로세스 (분류 및 세탁)</p><div class="title-divider"></div></div>
+            <div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; gap: 40px;">
+                <div style="display: flex; flex-direction: column; align-items: center;"><div class="image-placeholder" style="width: 400px; height: 400px; background-color: #f9fafb; border: 1px solid #e5e7eb; margin-bottom: 20px;"><div class="placeholder-text" style="font-size: 20px;"><i class="fas fa-check-double text-8xl mb-4"></i><br>분류 결과 확인 이미지</div></div><h3 style="font-size: 24px; font-weight: 700; color: #1f2937;">3. 분류 결과 확인</h3></div>
+                <i class="fas fa-long-arrow-alt-right" style="font-size: 48px; color: #9ca3af;"></i>
+                <div style="display: flex; flex-direction: column; align-items: center;"><div class="image-placeholder" style="width: 400px; height: 400px; background-color: #f9fafb; border: 1px solid #e5e7eb; margin-bottom: 20px;"><div class="placeholder-text" style="font-size: 20px;"><i class="fas fa-wifi text-8xl mb-4"></i><br>IoT 세탁기 연계</div></div><h3 style="font-size: 24px; font-weight: 700; color: #1f2937;">4. 스마트 세탁 연동</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 20: Demo -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item active">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content"><div class="header"><h2 class="title">4. 실제 사용 예시 및 기대 효과</h2><p class="subtitle">4-3. 사용 시연</p><div class="title-divider"></div></div></div>
+    </div>
+
+    <!-- Slide 21: Expected Effects -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item active">실제 사용 예시 및 기대 효과</div><div class="nav-item">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">4. 실제 사용 예시 및 기대 효과</h2><p class="subtitle">4-4. 최종 기대 효과</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border-top: 5px solid #6366f1; padding: 25px;"><div style="text-align: center; margin-bottom: 20px;"><i class="fas fa-magic" style="font-size: 48px; margin-bottom: 10px; color: #6366f1;"></i><h3 style="font-size: 26px; font-weight: 900; color: #1f2937;">사용자 경험 혁신</h3></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 25px;"><li style="font-size: 20px; color: #374151; line-height: 1.6;"><b>정신적 노동으로부터의 해방</b><span style="display: block; font-size: 17px; color: #6b7280; padding-left: 10px; margin-top: 5px;">세탁 전 분류 과정의 고민과 스트레스를 원천적으로 제거합니다.</span></li><li style="font-size: 20px; color: #374151; line-height: 1.6;"><b>의사결정 피로도 감소</b><span style="display: block; font-size: 17px; color: #6b7280; padding-left: 10px; margin-top: 5px;">복잡한 세탁법과 세제 종류를 고민할 필요 없이, 투입만으로 모든 과정이 해결됩니다.</span></li></ul></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border-top: 5px solid #10b981; padding: 25px;"><div style="text-align: center; margin-bottom: 20px;"><i class="fas fa-chart-line" style="font-size: 48px; margin-bottom: 10px; color: #10b981;"></i><h3 style="font-size: 26px; font-weight: 900; color: #1f2937;">경제적 가치 창출</h3></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 25px;"><li style="font-size: 20px; color: #374151; line-height: 1.6;"><b>의류 자산의 가치 보존</b><span style="display: block; font-size: 17px; color: #6b7280; padding-left: 10px; margin-top: 5px;">잘못된 세탁으로 인한 의류 손상을 방지하여, 소중한 옷의 수명을 극대화합니다.</span></li><li style="font-size: 20px; color: #374151; line-height: 1.6;"><b>지속 가능한 라이프스타일</b><span style="display: block; font-size: 17px; color: #6b7280; padding-left: 10px; margin-top: 5px;">불필요한 의류 소비를 줄이고, 드라이클리닝 비용을 절감하여 합리적인 소비를 돕습니다.</span></li></ul></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border-top: 5px solid #f59e0b; padding: 25px;"><div style="text-align: center; margin-bottom: 20px;"><i class="fas fa-database" style="font-size: 48px; margin-bottom: 10px; color: #f59e0b;"></i><h3 style="font-size: 26px; font-weight: 900; color: #1f2937;">데이터 기반 부가 가치</h3></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 25px;"><li style="font-size: 20px; color: #374151; line-height: 1.6;"><b>스마트홈 허브로의 역할</b><span style="display: block; font-size: 17px; color: #6b7280; padding-left: 10px; margin-top: 5px;">세탁기와 연동하여 세탁 전 과정을 자동화하는 스마트홈 생태계의 중심으로 기능합니다.</span></li><li style="font-size: 20px; color: #374151; line-height: 1.6;"><b>개인화 플랫폼으로 확장</b><span style="display: block; font-size: 17px; color: #6b7280; padding-left: 10px; margin-top: 5px;">축적된 데이터를 기반으로 맞춤형 세제 추천, 의류 관리 팁 등 구독형 서비스를 제공합니다.</span></li></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 22: Schedule Intro -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item active">추가적인 발전 방향성</div></div>
+        <div class="main-content"><div class="header"><h2 class="title">5. 추가적인 발전 방향성</h2><p class="subtitle">5-1. 프로젝트 개발 스케줄</p><div class="title-divider"></div></div></div>
+    </div>
+
+    <!-- Slide 23: Future Works -->
+    <div class="slide" style="flex-direction: column;">
+        <div class="top-nav"><div class="nav-item">요구사항 분석</div><div class="nav-item">사용 데이터셋</div><div class="nav-item">사용 모델 & 학습 과정</div><div class="nav-item">실제 사용 예시 및 기대 효과</div><div class="nav-item active">추가적인 발전 방향성</div></div>
+        <div class="main-content">
+            <div class="header"><h2 class="title">5. 추가적인 발전 방향성</h2><p class="subtitle">5-2. 기술적 보완점 및 고도화 전략</p><div class="title-divider"></div></div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; flex-grow: 1;">
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border-bottom: 5px solid #6366f1; padding: 25px;"><div style="text-align: left; margin-bottom: 20px;"><i class="fas fa-database" style="font-size: 40px; margin-bottom: 10px; color: #6366f1;"></i><h3 style="font-size: 22px; font-weight: 900; color: #1f2937;">데이터 중심 접근 강화</h3></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;"><li style="font-size: 17px; color: #374151; line-height: 1.6; display: flex;"><i class="fas fa-angle-right" style="margin-right: 10px; margin-top: 5px; color: #9ca3af;"></i><div><b>클래스 불균형 해소:</b><br>생성형 AI를 활용한 소수 클래스 데이터 합성 및 증강</div></li><li style="font-size: 17px; color: #374151; line-height: 1.6; display: flex;"><i class="fas fa-angle-right" style="margin-right: 10px; margin-top: 5px; color: #9ca3af;"></i><div><b>데이터셋 확장:</b><br>다양한 조명, 구김 등 '어려운' 데이터를 추가하여 모델 강건성 확보</div></li></ul></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border-bottom: 5px solid #10b981; padding: 25px;"><div style="text-align: left; margin-bottom: 20px;"><i class="fas fa-cogs" style="font-size: 40px; margin-bottom: 10px; color: #10b981;"></i><h3 style="font-size: 22px; font-weight: 900; color: #1f2937;">모델 아키텍처 고도화</h3></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;"><li style="font-size: 17px; color: #374151; line-height: 1.6; display: flex;"><i class="fas fa-angle-right" style="margin-right: 10px; margin-top: 5px; color: #9ca3af;"></i><div><b>어텐션 메커니즘 도입:</b><br>원단의 핵심적인 패턴 및 질감에 더 집중하여 유사 클래스 구분 능력 향상</div></li></ul></div>
+                <div style="display: flex; flex-direction: column; background-color: #f9fafb; border-radius: 12px; border-bottom: 5px solid #f59e0b; padding: 25px;"><div style="text-align: left; margin-bottom: 20px;"><i class="fas fa-sync-alt" style="font-size: 40px; margin-bottom: 10px; color: #f59e0b;"></i><h3 style="font-size: 22px; font-weight: 900; color: #1f2937;">지속 학습 시스템 구축</h3></div><ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;"><li style="font-size: 17px; color: #374151; line-height: 1.6; display: flex;"><i class="fas fa-angle-right" style="margin-right: 10px; margin-top: 5px; color: #9ca3af;"></i><div><b>사용자 피드백 활용:</b><br>오분류에 대한 사용자 피드백을 수집하고, 이를 모델 재학습에 활용</div></li><li style="font-size: 17px; color: #374151; line-height: 1.6; display: flex;"><i class="fas fa-angle-right" style="margin-right: 10px; margin-top: 5px; color: #9ca3af;"></i><div><b>성장하는 AI 모델:</b><br>고정된 성능이 아닌, 사용자와 함께 지속적으로 똑똑해지는 시스템 구현</div></li></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 24: Q&A -->
+    <div class="slide" style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); flex-direction: column; justify-content: center; align-items: center; padding: 40px; position: relative;">
+        <div class="text-center">
+            <h1 style="font-size: 150px; font-weight: 900; color: #4f46e5; letter-spacing: 2px;">Q&A</h1>
+            <p style="font-size: 36px; font-weight: 500; color: #374151; margin-top: 10px;">경청해주셔서 감사합니다.</p>
+        </div>
+        <div style="position: absolute; bottom: 60px; text-align: center; font-size: 20px; color: #4b5563;">
+            <p style="font-weight: 700; margin-bottom: 8px;"><i class="fas fa-users mr-2"></i>IoLaundry (3조)</p>
+            <p>김선재, 이성윤, 차요준</p>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                if (currentSlideIndex < slides.length - 1) {
+                    currentSlideIndex++;
+                    showSlide(currentSlideIndex);
+                }
+            } else if (event.key === 'ArrowLeft') {
+                if (currentSlideIndex > 0) {
+                    currentSlideIndex--;
+                    showSlide(currentSlideIndex);
+                }
+            }
+        });
+
+        showSlide(currentSlideIndex);
+    </script>
+
+</body>
+</html>
