@@ -1,3 +1,31 @@
 .venv
 
 data/
+
+fabric/
+
+dataset_cloth/
+
+full_model/
+
+.gitignore/
+
+fabric_dataset/
+
+dataset/
+
+model/
+
+model_sav/
+
+logs/
+
+runs/
+
+2. ConvNeXt_YJ.py
+
+3. Mulitask_app.py
+
+4. val_data.py
+
+5. app.py
