@@ -1,31 +1,35 @@
+# venv
 .venv
 
+# data
 data/
-
+dataset/
+dataset12/
+fabric_dataset/
 fabric/
-
 dataset_cloth/
 
-full_model/
+runs/
+app_ori.py
 
-.gitignore/
-
-fabric_dataset/
-
-dataset/
-
-model/
-
-model_sav/
-
-logs/
-
+# file / folder
+__pycache__/
+common/
 runs/
 
+# model -> 용량문제로 google drive
+model/
+model_sav/
+full_model/
+
+app_ori.py
+test.ipynb
+
+# git
+.gitignore
+
+# YJ
 2. ConvNeXt_YJ.py
-
 3. Mulitask_app.py
-
 4. val_data.py
-
 5. app.py
